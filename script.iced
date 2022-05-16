@@ -13,13 +13,13 @@ polly = new Polly({
 module.exports = wow = {}
 
 wow.sounds = """
+  low health
   pet low
   peel now
   trinket
   tap
   grounding
-  sheep
-  silence
+  dispel
   drinking
   will
 """.split '\n'

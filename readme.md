@@ -1,2 +1,3 @@
 # wow-sounds
-for use with msbt
+for use with msbt/wa
+
