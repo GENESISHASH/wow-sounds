@@ -1,0 +1,13 @@
+{
+  "name": "wow-sounds",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/GENESISHASH/wow-sounds.git",
+  "author": "taky <taky@taky.com>",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.1136.0",
+    "text-to-mp3": "^1.0.4",
+    "wegweg": "^0.21.0"
+  }
+}
