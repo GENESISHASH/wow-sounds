@@ -13,15 +13,13 @@ polly = new Polly({
 module.exports = wow = {}
 
 wow.sounds = """
-  low health
   pet low
   peel now
   trinket
   tap
-  grounding
-  dispel
-  drinking
   will
+  cloak
+  bubble
 """.split '\n'
 
 wow.create_mp3 = ((str,cb) ->
@@ -31,12 +29,12 @@ wow.create_mp3 = ((str,cb) ->
   filename = __dirname + '/output/' + _.uri_title(str) + '.mp3'
   rm filename if _.exists(filename)
 
-  log /Creating file/, _.base(filename)
+  log /Creating file../, _.base(filename)
 
   opt = {
     Text: str
     OutputFormat: 'mp3'
-    VoiceId: 'Raveena'
+    #VoiceId: 'Raveena'
     LanguageCode: 'en-US'
   }
 
@@ -44,6 +42,14 @@ wow.create_mp3 = ((str,cb) ->
   if e then throw e
 
   require('fs').writeFileSync(filename,r.AudioStream)
+
+  # make louder
+  log /Making audio louder../, _.base(filename)
+
+  await exec """
+    lame --scale 4 "#{filename}" "#{filename}"
+  """, {async:on}, defer e
+  if e then throw e
 
   return cb null, true
 )
